@@ -1,0 +1,91 @@
+.goal-timeline {
+    --gt-task: var(--color-green, #3f9d6b);
+    --gt-log: var(--color-blue, #4a86d8);
+    --gt-open: var(--color-orange, #d98a33);
+    --gt-line: var(--background-modifier-border, #8884);
+    --gt-muted: var(--text-muted, #888);
+    margin: 0.75em 0 1.5em;
+    padding: 14px 16px;
+    border: 1px solid var(--gt-line);
+    border-radius: 8px;
+    font-size: var(--font-ui-small, 13px);
+}
+
+.goal-timeline .gt-summary { color: var(--gt-muted); margin-bottom: 26px; }
+.goal-timeline .gt-chart { position: relative; }
+.goal-timeline .gt-lane { display: flex; align-items: flex-end; }
+.goal-timeline .gt-lane-label { flex: 0 0 44px; padding-bottom: 3px; color: var(--gt-muted); font-size: 11px; }
+.goal-timeline .gt-track { position: relative; flex: 1; margin-right: 10px; border-bottom: 1px solid var(--gt-line); }
+.goal-timeline .gt-dot {
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    margin-left: -4.5px;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: transform 100ms ease;
+}
+.goal-timeline .gt-dot:hover, .goal-timeline .gt-dot:focus-visible { transform: scale(1.5); z-index: 3; }
+.goal-timeline .gt-more { position: absolute; color: var(--gt-muted); font-size: 9px; line-height: 12px; white-space: nowrap; transform: translateX(-50%); cursor: help; }
+.goal-timeline .gt-task { background: var(--gt-task); }
+.goal-timeline .gt-log { background: var(--gt-log); border-radius: 2px; }
+.goal-timeline .gt-axis { position: relative; flex: 1; height: 20px; margin-right: 10px; }
+.goal-timeline .gt-tick { position: absolute; top: 4px; color: var(--gt-muted); font-size: 11px; white-space: nowrap; transform: translateX(-50%); }
+.goal-timeline .gt-tick:first-child { transform: none; }
+
+.goal-timeline .gt-markers { position: absolute; inset: 0 10px 20px 44px; pointer-events: none; }
+.goal-timeline .gt-mark { position: absolute; top: 0; bottom: 0; border-left: 1px dashed var(--gt-muted); }
+.goal-timeline .gt-mark-label { position: absolute; top: -17px; left: 0; color: var(--gt-muted); font-size: 10px; white-space: nowrap; transform: translateX(-50%); }
+.goal-timeline .gt-mark-start .gt-mark-label { transform: none; }
+.goal-timeline .gt-mark-end .gt-mark-label { transform: translateX(-100%); }
+.goal-timeline .gt-mark-today { border-left: 2px solid var(--interactive-accent, #7c5cff); }
+
+.goal-timeline .gt-goals { margin-top: 16px; }
+.goal-timeline .gt-goal { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(50px, 1fr) 52px 74px; align-items: center; gap: 10px; margin-bottom: 4px; }
+.goal-timeline .gt-goal-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.goal-timeline .gt-bar { height: 6px; overflow: hidden; border-radius: 3px; background: var(--gt-line); }
+.goal-timeline .gt-bar-fill { height: 100%; background: var(--gt-task); }
+.goal-timeline .gt-goal-count, .goal-timeline .gt-goal-status { color: var(--gt-muted); font-size: 11px; white-space: nowrap; }
+.goal-timeline .gt-goal-count { text-align: right; }
+.goal-timeline .gt-columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px 28px; margin-top: 16px; }
+.goal-timeline h4 { margin: 0 0 8px; font-size: 13px; }
+.goal-timeline ul { margin: 0; padding: 0; list-style: none; }
+.goal-timeline .gt-day { display: flex; gap: 10px; margin-bottom: 7px; }
+.goal-timeline .gt-day-date { flex: 0 0 48px; color: var(--gt-muted); }
+.goal-timeline .gt-day ul { flex: 1; min-width: 0; }
+.goal-timeline .gt-item { position: relative; margin: 0 0 2px; padding-left: 14px; }
+.goal-timeline .gt-item::before { content: ""; position: absolute; top: 0.45em; left: 0; width: 7px; height: 7px; border-radius: 50%; background: var(--gt-task); }
+.goal-timeline .gt-item-log::before { border-radius: 2px; background: var(--gt-log); }
+.goal-timeline .gt-item-open::before { background: transparent; border: 1.5px solid var(--gt-open); }
+.goal-timeline .gt-status { margin: 6px 0 3px; color: var(--gt-muted); font-size: 11px; }
+.goal-timeline .gt-item-ready::before { background: transparent; border: 1.5px solid var(--gt-task); }
+.goal-timeline .gt-item-blocked::before { background: transparent; border: 1.5px solid var(--gt-open); border-radius: 2px; }
+.goal-timeline .gt-tag { margin-left: 6px; color: var(--gt-muted); font-size: 10px; white-space: nowrap; }
+.goal-timeline .gt-waiting { color: var(--gt-muted); font-size: 11px; }
+.goal-timeline .gt-missing { color: var(--text-error, #e5534b); }
+.goal-timeline .gt-older summary { margin-bottom: 6px; color: var(--gt-muted); cursor: pointer; }
+.goal-timeline .gt-empty { margin: 0; color: var(--gt-muted); }
+
+.gt-overview .gt-summary { margin-bottom: 10px; }
+.gt-overview .gt-activity { display: flex; align-items: flex-end; gap: 2px; height: 44px; border-bottom: 1px solid var(--gt-line); }
+.gt-overview .gt-activity-day { display: flex; flex: 1; flex-direction: column; justify-content: flex-end; height: 100%; min-width: 0; }
+.gt-overview .gt-activity-task { background: var(--gt-task); }
+.gt-overview .gt-activity-log { background: var(--gt-log); }
+.gt-overview .gt-activity-axis { display: flex; justify-content: space-between; margin-top: 4px; color: var(--gt-muted); font-size: 11px; }
+.gt-overview .gt-tabs { display: flex; gap: 6px; margin: 16px 0 8px; }
+.gt-overview .gt-tab { height: auto; padding: 3px 10px; border: 1px solid var(--gt-line); border-radius: 6px; background: transparent; box-shadow: none; color: var(--gt-muted); font-size: 12px; cursor: pointer; }
+.gt-overview .gt-tab.is-active { background: var(--background-modifier-hover, #8882); color: var(--text-normal, inherit); }
+.gt-overview .gt-row { border-bottom: 1px solid var(--gt-line); }
+.gt-overview .gt-row > summary { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; padding: 5px 0; list-style: none; cursor: pointer; }
+.gt-overview .gt-row > summary::-webkit-details-marker { display: none; }
+.gt-overview .gt-row > summary::before { content: "▸"; flex: 0 0 10px; color: var(--gt-muted); font-size: 10px; }
+.gt-overview .gt-row[open] > summary::before { content: "▾"; }
+.gt-overview .gt-row .gt-goal-name { flex: 1 1 170px; min-width: 0; }
+.gt-overview .gt-row .gt-bar { flex: 0 0 70px; }
+.gt-overview .gt-row .gt-goal-count { flex: 0 0 44px; }
+.gt-overview .gt-row-meta { flex: 0 0 200px; color: var(--gt-muted); font-size: 11px; white-space: nowrap; }
+.gt-overview .gt-flag { flex: 0 0 52px; font-size: 11px; text-align: right; }
+.gt-overview .gt-flag-overdue { color: var(--text-error, #e5534b); }
+.gt-overview .gt-flag-stale { color: var(--gt-open); }
+.gt-overview .gt-row-body .goal-timeline { margin: 4px 0 10px 18px; padding: 10px 12px; }
+.gt-overview .gt-item-notice::before { background: var(--gt-open); }
